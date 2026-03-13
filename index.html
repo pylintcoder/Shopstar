@@ -1,387 +1,54 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShopStar</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f7f7f7; }
-    header { background: #222; color: #fff; padding: 1rem; text-align: center; }
-    .search-bar { margin: 1rem auto; max-width: 400px; display: flex; }
-    .search-bar input { flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px 0 0 4px; }
-    .search-bar button { padding: 0.5rem 1rem; border: none; background: #ff9800; color: #fff; border-radius: 0 4px 4px 0; cursor: pointer; }
-    .tabs { display: flex; justify-content: center; margin: 1rem 0; }
-    .tab { padding: 0.75rem 2rem; margin: 0 0.5rem; background: #fff; border-radius: 4px; cursor: pointer; border: 1px solid #ddd; transition: background 0.2s; }
-    .tab.active { background: #ff9800; color: #fff; border-color: #ff9800; }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
-      align-items: flex-start;
-    }
-    .product {
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px #ddd;
-      padding: 1rem;
-      margin: 0;
-      display: block;
-      width: 260px;
-      height: 340px;
-      box-sizing: border-box;
-      text-align: center;
-      break-inside: avoid;
-      transition: box-shadow 0.2s;
-      cursor: pointer;
-    }
-    .product:hover {
-      box-shadow: 0 4px 16px #bbb;
-      cursor: pointer;
-    }
-
-    .cart-btn {
-      position: fixed;
-      right: 32px;
-      bottom: 32px;
-      width: 80px;
-      height: 80px;
-      background: #2ecc40;
-      border: none;
-      border-radius: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px #aaa;
-      z-index: 100;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .cart-btn:hover {
-      background: #27ae60;
-    }
-    .cart-icon {
-      width: 44px;
-      height: 44px;
-      display: block;
-    }
-    .cart-icon svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      fill: #fff;
-    }
-    .cart-count {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #fff;
-      margin-bottom: 4px;
-      background: #ff9800;
-      border-radius: 12px;
-      padding: 2px 10px;
-      min-width: 32px;
-      text-align: center;
-      box-shadow: 0 2px 8px #aaa;
-    }
-    .product img {
-      width: 100%;
-      height: 77%;
-      object-fit: cover;
-      margin: 0;
-      padding: 0;
-      display: block;
-    }
-    .product h3 {
-      margin: 0.5rem 0;
-      font-size: 1.1rem;
-    }
-    .product p {
-      color: #888;
-      margin: 0.5rem 0;
-    }
-    @media (max-width: 900px) {
-      .products {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .product {
-        width: 48%;
-      }
-    }
-    @media (max-width: 600px) {
-      .products {
-        gap: 0.5rem;
-        flex-direction: column;
-      }
-      .product {
-        width: 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopstar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="sliding-banner">
-    <span>// ShopStar Ecommerce Website // Simple HTML, CSS, and JS implementation</span>
-  </div>
-    <style>
-      .sliding-banner {
-        width: 100%;
-        overflow: hidden;
-        background: #d00;
-        color: #fff;
-        font-size: 1.1rem;
-        font-family: Arial, sans-serif;
-        padding: 0.5rem 0;
-        position: relative;
-        z-index: 10;
-      }
-      .sliding-banner span {
-        display: inline-block;
-        white-space: nowrap;
-        animation: slide-banner 7.5s linear infinite;
-      }
-      @keyframes slide-banner {
-        0% {
-          transform: translateX(-100%);
-        }
-        100% {
-          transform: translateX(100%);
-        }
-      }
-    </style>
-  <header>
-    <h1>ShopStar</h1>
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search products...">
-      <button onclick="searchProducts()">Search</button>
+    <div class="container">
+        <h1>Welcome to Shopstar</h1>
+        <p>Your one-stop shop for all things fashion!</p>
+        <p>Shop the latest trends at unbeatable prices.</p>
     </div>
-  </header>
-  <div class="tabs">
-    <div class="tab active" onclick="switchCategory('all')">All</div>
-    <div class="tab" onclick="switchCategory('food')">Food</div>
-    <div class="tab" onclick="switchCategory('accessories')">Accessories</div>
-    <div class="tab" onclick="switchCategory('fashion')">Fashion</div>
-    <div class="tab" onclick="switchCategory('cosmetics')">Cosmetics</div>
-  </div>
-  <div class="products" id="productsContainer"></div>
-
-  <button class="cart-btn" id="cartBtn" title="View Cart">
-    <span class="cart-count" id="cartCount">0</span>
-    <span class="cart-icon">
-      <svg viewBox="0 0 24 24">
-        <circle cx="9" cy="21" r="1.5"/>
-        <circle cx="17" cy="21" r="1.5"/>
-        <path d="M7 6h15l-1.5 9h-13z"/>
-        <path d="M7 6V4a1 1 0 0 1 1-1h2" stroke="#fff" stroke-width="2" fill="none"/>
-      </svg>
-    </span>
-  </button>
-
-  <script>
-    // Sample product data
-    // Generate 100 products per section with color variation
-    const sectionColors = {
-      food: '#ffe0b2',
-      accessories: '#b2dfdb',
-      fashion: '#f8bbd0',
-      cosmetics: '#d1c4e9',
-      all: '#fff'
-    };
-
-    const sampleNames = {
-      food: ['Organic Apples', 'Chocolate Cake', 'Banana', 'Orange Juice', 'Granola Bar', 'Cheese', 'Bread', 'Milk', 'Eggs', 'Chicken', 'Salmon', 'Rice', 'Pasta', 'Tomato', 'Lettuce', 'Carrot', 'Potato', 'Yogurt', 'Butter', 'Jam'],
-      accessories: ['Leather Wallet', 'Sunglasses', 'Watch', 'Bracelet', 'Necklace', 'Ring', 'Hat', 'Scarf', 'Backpack', 'Belt', 'Umbrella', 'Keychain', 'Earphones', 'Phone Case', 'Notebook', 'Pen', 'Gloves', 'Tie', 'Cufflinks', 'Handbag'],
-      fashion: ['Summer Dress', 'Sneakers', 'Jeans', 'T-shirt', 'Jacket', 'Skirt', 'Blouse', 'Shorts', 'Sweater', 'Coat', 'Boots', 'Sandals', 'Suit', 'Hoodie', 'Cap', 'Socks', 'Leggings', 'Cardigan', 'Polo', 'Vest'],
-      cosmetics: ['Lipstick', 'Face Cream', 'Perfume', 'Mascara', 'Eyeliner', 'Foundation', 'Blush', 'Nail Polish', 'Shampoo', 'Conditioner', 'Soap', 'Lotion', 'Serum', 'Powder', 'Highlighter', 'Bronzer', 'Cleanser', 'Moisturizer', 'Toner', 'Sunscreen']
-    };
-
-    const sampleImgs = {
-      food: [
-        'https://images.unsplash.com/photo-1502741126161-1d7d5f7a3c8a?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1519864604240-4f7e1c1b8b18?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1465101046530-73398c7f1b58?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1517260911205-8a3b0b7c7a87?auto=format&fit=crop&w=100&q=80'
-      ],
-      accessories: [
-        'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1512499617640-c2f999098c1a?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&q=80'
-      ],
-      fashion: [
-        'https://images.unsplash.com/photo-1465101046530-73398c7f1b58?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1517260911205-8a3b0b7c7a87?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=100&q=80'
-      ],
-      cosmetics: [
-        'https://images.unsplash.com/photo-1512499617640-c2f999098c1a?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1519864604240-4f7e1c1b8b18?auto=format&fit=crop&w=100&q=80',
-        'https://images.unsplash.com/photo-1502741126161-1d7d5f7a3c8a?auto=format&fit=crop&w=100&q=80'
-      ]
-    };
-
-    function randomPrice(min, max) {
-      return 'Ghs' + (Math.random() * (max - min) + min).toFixed(2);
-    }
-
-    let products = [];
-    ['food', 'accessories', 'fashion', 'cosmetics'].forEach(section => {
-      for (let i = 0; i < 100; i++) {
-        const name = sampleNames[section][i % sampleNames[section].length] + ' #' + (i + 1);
-        const price = randomPrice(2, 50);
-        const img = sampleImgs[section][i % sampleImgs[section].length];
-        products.push({ name, category: section, price, img });
-      }
-    });
-    // Shuffle products randomly
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-    shuffleArray(products);
-
-    let currentCategory = 'all';
-    let searchTerm = '';
-
-    // Load cart from localStorage
-    let cart = [];
-    try {
-      const cartData = localStorage.getItem('shopstar_cart');
-      if (cartData) cart = JSON.parse(cartData);
-    } catch (e) { cart = []; }
-
-    // Load activities from localStorage
-    let activities = [];
-    try {
-      const actData = localStorage.getItem('shopstar_activities');
-      if (actData) activities = JSON.parse(actData);
-    } catch (e) { activities = []; }
-
-    function saveActivities() {
-      localStorage.setItem('shopstar_activities', JSON.stringify(activities));
-    }
-
-    function addActivity(type, detail) {
-      activities.push({ type, detail, time: new Date().toISOString() });
-      saveActivities();
-    }
-
-    function renderProducts(filteredList = null) {
-      const container = document.getElementById('productsContainer');
-      container.innerHTML = '';
-      let filtered;
-      if (filteredList) {
-        filtered = filteredList;
-      } else {
-        if (currentCategory === 'all') {
-          filtered = products.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
-        } else {
-          filtered = products.filter(p =>
-            p.category === currentCategory &&
-            p.name.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        }
-      }
-      if (filtered.length === 0) {
-        container.innerHTML = '<p>No products found.</p>';
-        return;
-      }
-      filtered.forEach((p, idx) => {
-        container.innerHTML += `
-          <div class="product" style="background:${sectionColors[p.category]};" data-idx="${products.indexOf(p)}" tabindex="0">
-            <img src="${p.img}" alt="${p.name}">
-            <h3>${p.name}</h3>
-            <p>${p.price}</p>
-          </div>
-        `;
-      });
-
-      // Add click event to each product card
-      document.querySelectorAll('.product').forEach((el, i) => {
-        el.onclick = function() {
-          const prod = filtered[i];
-          addActivity('product_click', prod);
-          // Add to cart if not already
-          if (!cart.some(c => c.name === prod.name && c.category === prod.category)) {
-            cart.push(prod);
-            localStorage.setItem('shopstar_cart', JSON.stringify(cart));
-            updateCartCount();
-          }
-        };
-      });
-    }
-
-    function updateCartCount() {
-      document.getElementById('cartCount').textContent = cart.length;
-    }
-
-    function switchCategory(category) {
-      currentCategory = category;
-      searchTerm = document.getElementById('searchInput').value;
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.classList.remove('active');
-        if (tab.textContent.toLowerCase() === (category === 'all' ? 'all' : category)) tab.classList.add('active');
-      });
-      addActivity('switch_category', category);
-      renderProducts();
-    }
-
-    function searchProducts() {
-      searchTerm = document.getElementById('searchInput').value;
-      addActivity('search', searchTerm);
-      renderProducts();
-    }
-
-    // Initial render
-    switchCategory('all');
-    updateCartCount();
-
-    // Show all products on search bar focus
-    document.getElementById('searchInput').addEventListener('focus', function() {
-      renderProducts(products);
-    });
-
-    // Filter as user types
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-      searchTerm = e.target.value;
-      let filtered;
-      if (currentCategory === 'all') {
-        filtered = products.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
-      } else {
-        filtered = products.filter(p =>
-          p.category === currentCategory &&
-          p.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      }
-      renderProducts(filtered);
-    });
-
-    // Allow pressing Enter to search
-    document.getElementById('searchInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') searchProducts();
-    });
-
-    // Cart button click handler (redirect to cart page)
-    document.getElementById('cartBtn').addEventListener('click', function() {
-      if (cart.length === 0) {
-        alert('Cart is empty!');
-        return;
-      }
-      // Store cart in localStorage and redirect
-      localStorage.setItem('shopstar_cart', JSON.stringify(cart));
-      addActivity('cart_view', cart);
-      window.location.href = 'cart.html';
-    });
-  </script>
 </body>
 </html>
