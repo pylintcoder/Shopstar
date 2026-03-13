@@ -15,6 +15,139 @@
     .tabs { display: flex; justify-content: center; margin: 1rem 0; }
     .tab { padding: 0.75rem 2rem; margin: 0 0.5rem; background: #fff; border-radius: 4px; cursor: pointer; border: 1px solid #ddd; transition: background 0.2s; }
     .tab.active { background: #ff9800; color: #fff; border-color: #ff9800; }
+    /* ---------- GLOBAL FIXES ---------- */
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin:0;
+  overflow-x:hidden;
+  font-family: Arial, sans-serif;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+
+/* ---------- CATEGORY TABS ---------- */
+
+.category-tabs{
+  display:flex;
+  overflow-x:auto;
+  white-space:nowrap;
+  gap:10px;
+  padding:10px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+
+.category-tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.category-tabs button{
+  flex:0 0 auto;
+  padding:8px 14px;
+  border:none;
+  background:#f2f2f2;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.category-tabs button:hover{
+  background:#e6e6e6;
+}
+
+
+/* ---------- PRODUCT GRID ---------- */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  padding:16px;
+}
+
+.product-card{
+  width:100%;
+}
+
+
+/* ---------- MASONRY STYLE SUPPORT ---------- */
+
+.products.masonry{
+  column-count:4;
+  column-gap:16px;
+}
+
+.products.masonry .product-card{
+  break-inside:avoid;
+  margin-bottom:16px;
+}
+
+
+/* ---------- TABLET ---------- */
+
+@media (max-width:1024px){
+
+.products{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.products.masonry{
+  column-count:3;
+}
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width:768px){
+
+.products{
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.products.masonry{
+  column-count:2;
+  column-gap:12px;
+}
+
+.category-tabs{
+  overflow-x:auto;
+  padding:10px 8px;
+}
+
+.category-tabs button{
+  font-size:14px;
+  padding:8px 12px;
+}
+
+}
+
+
+/* ---------- VERY SMALL PHONES ---------- */
+
+@media (max-width:480px){
+
+.products{
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.products.masonry{
+  column-count:2;
+  column-gap:10px;
+}
+
+}
     .products {
       display: flex;
       flex-wrap: wrap;
